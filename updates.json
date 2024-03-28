@@ -1,10 +1,11 @@
 {
   "homepage":"https://github.com/deepslater/Equilibrium",
   "promos": {
-    "1.20.1-latest": "1.20.1-0.0.0.0",
-    "1.20.1-recommended": "1.20.1-0.0.0.0"
+    "1.20.1-latest": "1.20.1-0.0.0.1",
+    "1.20.1-recommended": "1.20.1-0.0.0.1"
   },
   "1.20.1": {
+    "1.20.1-0.0.0.1": "Added 'music' discs.",
     "1.20.1-0.0.0.0": "Earliest possible version. This text should be impossible to find in the Forge client!"
   }
 }
