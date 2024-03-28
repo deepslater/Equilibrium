@@ -3,6 +3,7 @@ package deepslater.equilibrium;
 import com.mojang.logging.LogUtils;
 import deepslater.equilibrium.item.ModCreativeModeTabs;
 import deepslater.equilibrium.item.ModItems;
+import deepslater.equilibrium.sound.ModSounds;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +36,7 @@ public class Equilibrium {
         if (CreativeTab) {
             ModCreativeModeTabs.register(modEventBus);
         }
+        ModSounds.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

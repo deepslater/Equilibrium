@@ -32,7 +32,10 @@ New trophy music discs inspired by [RIAA Certification](https://en.wikipedia.org
 - [deepslater](https://github.com/deepslater) (author and maintainer)
 
 Equilibrium was made with use of the following:
-- Kevin MacLeod Royalty Free Music: https://incompetech.com
+- "Monkeys Spinning Monkeys", "Sneaky Snitch", "Who Likes to Party"
+  Kevin MacLeod (incompetech.com)
+  Licensed under Creative Commons: By Attribution 3.0
+  http://creativecommons.org/licenses/by/3.0/
 - [Minecraft Forge](https://minecraftforge.net)
 - GitHub
 - [IntelliJ IDEA Community Edition](https://www.jetbrains.com/idea/download/)

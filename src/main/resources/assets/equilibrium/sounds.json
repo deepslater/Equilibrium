@@ -1,0 +1,26 @@
+{
+  "sneaky_snitch": {
+    "sounds": [
+      {
+        "name": "equilibrium:sneaky_snitch",
+        "stream": true
+      }
+    ]
+  },
+  "monkeys_spinning_monkeys": {
+    "sounds": [
+      {
+        "name": "equilibrium:monkeys_spinning_monkeys",
+        "stream": true
+      }
+    ]
+  },
+  "who_likes_to_party": {
+    "sounds": [
+      {
+        "name": "equilibrium:who_likes_to_party",
+        "stream": true
+      }
+    ]
+  }
+}

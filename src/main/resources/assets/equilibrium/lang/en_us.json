@@ -1,7 +1,10 @@
 {
   "item.equilibrium.music_disc_gold": "Gold Disc",
+  "item.equilibrium.music_disc_gold.desc": "Kevin MacLeod - Sneaky Snitch (CC BY 3.0)",
   "item.equilibrium.music_disc_platinum": "Platinum Disc",
+  "item.equilibrium.music_disc_platinum.desc": "Kevin MacLeod - Monkeys Spinning Monkeys (CC BY 3.0)",
   "item.equilibrium.music_disc_diamond": "Diamond Disc",
+  "item.equilibrium.music_disc_diamond.desc": "Kevin MacLeod - Who Likes To Party (CC BY 3.0)",
 
   "creativetab.equilibrium": "Equilibrium"
 }
