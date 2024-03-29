@@ -32,8 +32,9 @@ public class ModBlocks {
         return toReturn;
     }
 
-    private static ToIntFunction lightLevel10 = value -> 10;
+    // can call .noLootTable() to override datagen
 
+    private static ToIntFunction<BlockState> lightLevel10 = value -> 10;
     public static final RegistryObject<Block> ECHOES_BLOCK = registerBlock("echoes_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
                     .lightLevel(lightLevel10)));
