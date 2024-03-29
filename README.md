@@ -4,7 +4,7 @@ Equilibrium is a Minecraft mod based around balance changes and additions that m
 
 ## Installation
 
-Download the recommended mod version for the Minecraft version you're playing from the packages section of this repository. Take it from your download directory and place it in the `mods` folder in `.minecraft`.
+Download the recommended mod version for the Minecraft version you're playing from the releases section of this repository. Take it from your download directory and place it in the `mods` folder in `.minecraft`.
 
 ## Configuration
 
