@@ -20,6 +20,10 @@ Forthcoming
 
 ### Trophies
 
+New trophy blocks:
+
+- Block of Echoes, a storage block for 9 Echo Shards
+
 New trophy music discs inspired by [RIAA Certification](https://en.wikipedia.org/wiki/RIAA_certification) with music by Kevin MacLeod craftable from other discs:
 
 - Gold Disc, "Sneaky Snitch", crafted shapeless from five music discs of any kind from vanilla
