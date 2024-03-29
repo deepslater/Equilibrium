@@ -1,4 +1,4 @@
-package deepslater.equilibrium.datagen.loot;
+package deepslater.equilibrium.datagen;
 
 import deepslater.equilibrium.Equilibrium;
 import deepslater.equilibrium.item.ModItems;
@@ -13,14 +13,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagGenerator extends ItemTagsProvider {
-    public ModItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_, CompletableFuture<TagLookup<Block>> p_275322_, String modId, @Nullable ExistingFileHelper existingFileHelper) {
+    public ModItemTagGenerator(PackOutput p_275343_, CompletableFuture<HolderLookup.Provider> p_275729_,
+                               CompletableFuture<TagLookup<Block>> p_275322_,
+                               @Nullable ExistingFileHelper existingFileHelper) {
         super(p_275343_, p_275729_, p_275322_, Equilibrium.MOD_ID, existingFileHelper);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        this.tag(ItemTags.MUSIC_DISCS).add(ModItems.MUSIC_DISC_DIAMOND.get());
-        this.tag(ItemTags.MUSIC_DISCS).add(ModItems.MUSIC_DISC_GOLD.get());
-        this.tag(ItemTags.MUSIC_DISCS).add(ModItems.MUSIC_DISC_PLATINUM.get());
+        this.tag(ItemTags.MUSIC_DISCS).add(ModItems.MUSIC_DISC_DIAMOND.get(),
+                ModItems.MUSIC_DISC_GOLD.get(),
+                ModItems.MUSIC_DISC_PLATINUM.get());
     }
 }

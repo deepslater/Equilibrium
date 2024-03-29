@@ -1,6 +1,7 @@
 package deepslater.equilibrium;
 
 import com.mojang.logging.LogUtils;
+import deepslater.equilibrium.block.ModBlocks;
 import deepslater.equilibrium.item.ModCreativeModeTabs;
 import deepslater.equilibrium.item.ModItems;
 import deepslater.equilibrium.sound.ModSounds;
@@ -33,6 +34,7 @@ public class Equilibrium {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         if (CreativeTab) {
             ModCreativeModeTabs.register(modEventBus);
         }
