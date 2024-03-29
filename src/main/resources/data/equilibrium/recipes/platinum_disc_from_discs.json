@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "equilibrium:music_disc_gold"
+    },
+    {
+      "tag": "equilibrium:trophy_disc_components"
+    },
+    {
+      "tag": "equilibrium:trophy_disc_components"
+    },
+    {
+      "tag": "equilibrium:trophy_disc_components"
+    },
+    {
+      "tag": "equilibrium:trophy_disc_components"
+    },
+    {
+      "tag": "equilibrium:trophy_disc_components"
+    }
+  ],
+  "result": {
+    "item": "equilibrium:music_disc_platinum"
+  },
+  "show_notification": true
+}

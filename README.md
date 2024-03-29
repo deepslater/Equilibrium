@@ -22,7 +22,7 @@ Forthcoming
 
 New trophy blocks:
 
-- Block of Echoes, a storage block for 9 Echo Shards
+- Block of Echoes, a decorative light block (10) crafted from 4 echo shards
 
 New trophy music discs inspired by [RIAA Certification](https://en.wikipedia.org/wiki/RIAA_certification) with music by Kevin MacLeod craftable from other discs:
 

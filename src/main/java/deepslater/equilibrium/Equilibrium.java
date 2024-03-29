@@ -31,14 +31,16 @@ public class Equilibrium {
     private static boolean CreativeTab = true;
 
     public Equilibrium() {
+        // Holds a list of event listeners, in our case registry events
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        // Each class with registry events must call a register method by which we supply the eventBus
+        ModSounds.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         if (CreativeTab) {
             ModCreativeModeTabs.register(modEventBus);
         }
-        ModSounds.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

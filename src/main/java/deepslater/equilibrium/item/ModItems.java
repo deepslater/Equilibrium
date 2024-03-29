@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
+    // DeferredRegister is the
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Equilibrium.MOD_ID);
 
@@ -23,7 +24,6 @@ public class ModItems {
     public static final RegistryObject<Item> MUSIC_DISC_PLATINUM = ITEMS.register("music_disc_platinum",
             () -> new RecordItem(15, ModSounds.MONKEYS_SPINNING_MONKEYS,
                     new Item.Properties().stacksTo(1),2500));
-
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:echo_shard"
+    }
+  },
+  "result": {
+    "item": "equilibrium:echoes_block"
+  },
+  "show_notification": true
+}

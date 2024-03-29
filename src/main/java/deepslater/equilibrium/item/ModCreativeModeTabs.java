@@ -22,6 +22,7 @@ public class ModCreativeModeTabs {
                             .icon(() -> new ItemStack(ModItems.MUSIC_DISC_DIAMOND.get()))
                             .title(Component.translatable("creativetab.equilibrium"))
                             .displayItems((pParameters, pOutput) -> {
+                                // forEach item in ModItems, displays that in creative tab
                                 for (RegistryObject<Item> item : ModItems.ITEMS.getEntries()) {
                                     pOutput.accept(item.get());
                                 }
