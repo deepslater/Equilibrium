@@ -2,6 +2,7 @@ package deepslater.equilibrium;
 
 import com.mojang.logging.LogUtils;
 import deepslater.equilibrium.block.ModBlocks;
+import deepslater.equilibrium.config.EquilibriumCommonConfigs;
 import deepslater.equilibrium.item.ModCreativeModeTabs;
 import deepslater.equilibrium.item.ModItems;
 import deepslater.equilibrium.sound.ModSounds;
@@ -27,18 +28,25 @@ public class Equilibrium {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "equilibrium";
     private static final Logger LOGGER = LogUtils.getLogger();
-
-    private static boolean CreativeTab = true;
+    private static final boolean CREATIVE_TAB = EquilibriumCommonConfigs.CREATIVE_TAB.get();
+    private static final boolean TROPHY_ADDITIONS = EquilibriumCommonConfigs.TROPHY_ADDITIONS.get();
+    private static final boolean LOOT_TWEAKS = EquilibriumCommonConfigs.LOOT_TWEAKS.get();
 
     public Equilibrium() {
         // Holds a list of event listeners, in our case registry events
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModLoadingContext.get().registerConfig(
+                ModConfig.Type.COMMON,
+                EquilibriumCommonConfigs.SPEC,
+                "equilibrium-common.toml"
+        );
+
         // Each class with registry events must call a register method by which we supply the eventBus
         ModSounds.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        if (CreativeTab) {
+        if (CREATIVE_TAB && TROPHY_ADDITIONS) {
             ModCreativeModeTabs.register(modEventBus);
         }
 
@@ -52,26 +60,24 @@ public class Equilibrium {
         modEventBus.addListener(this::addCreative);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
-    }
-
-    // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (!CreativeTab) {
+        if (!CREATIVE_TAB && TROPHY_ADDITIONS) {
             if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
                 event.accept(ModItems.MUSIC_DISC_GOLD);
                 event.accept(ModItems.MUSIC_DISC_PLATINUM);
                 event.accept(ModItems.MUSIC_DISC_DIAMOND);
+            }
+            if(event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+                event.accept(ModBlocks.ECHOES_BLOCK);
             }
         }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-
-    }
+    public void onServerStarting(ServerStartingEvent event) {}
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
