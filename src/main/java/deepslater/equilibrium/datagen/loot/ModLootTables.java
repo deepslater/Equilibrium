@@ -12,6 +12,8 @@ public class ModLootTables {
     }
     private static final Set<ResourceLocation> MOD_LOCATIONS = Sets.newHashSet();
     public static final ResourceLocation SOUL_WORKSHOP;
+    public static final ResourceLocation SEMIPRECIOUS_ARMOR;
+    public static final ResourceLocation PRECIOUS_UNDERGROUND_TOOL;
 
     private static ResourceLocation register(String pId) {
         return register(new ResourceLocation(pId));
@@ -27,5 +29,7 @@ public class ModLootTables {
 
     static {
         SOUL_WORKSHOP = register("equilibrium:chests/soul_workshop");
+        SEMIPRECIOUS_ARMOR = register("gameplay/semiprecious_armor");
+        PRECIOUS_UNDERGROUND_TOOL = register("gameplay/precious_underground_tool");
     }
 }
