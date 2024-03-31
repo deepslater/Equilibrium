@@ -23,5 +23,4 @@ public class EquilibriumCommonConfigs {
         BUILDER.pop();
         SPEC = BUILDER.build();
     }
-
 }

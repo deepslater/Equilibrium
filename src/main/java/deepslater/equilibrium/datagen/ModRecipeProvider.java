@@ -46,12 +46,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 )
                 .requires(ModItems.MUSIC_DISC_GOLD.get())
                 .unlockedBy(getHasName(ModItems.MUSIC_DISC_GOLD.get()), has(ModItems.MUSIC_DISC_GOLD.get()))
-                .save(consumer, "platinum_disc_from_discs");
+                .save(consumer, "equilibrium:platinum_disc_from_discs");
         // Two golds
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MUSIC_DISC_PLATINUM.get())
                 .requires(Ingredient.of(ModItems.MUSIC_DISC_GOLD.get()),2)
                 .unlockedBy(getHasName(ModItems.MUSIC_DISC_GOLD.get()), has(ModItems.MUSIC_DISC_GOLD.get()))
-                .save(consumer,"platinum_disc_from_gold");
+                .save(consumer,"equilibrium:platinum_disc_from_gold");
 
         // Gold Disc recipe
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MUSIC_DISC_GOLD.get())

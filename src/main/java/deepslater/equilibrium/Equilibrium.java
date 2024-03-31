@@ -28,9 +28,7 @@ public class Equilibrium {
     // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "equilibrium";
     private static final Logger LOGGER = LogUtils.getLogger();
-    private static final boolean CREATIVE_TAB = EquilibriumCommonConfigs.CREATIVE_TAB.get();
-    private static final boolean TROPHY_ADDITIONS = EquilibriumCommonConfigs.TROPHY_ADDITIONS.get();
-    private static final boolean LOOT_TWEAKS = EquilibriumCommonConfigs.LOOT_TWEAKS.get();
+    private static final boolean CREATIVE_MODE_TAB = true;
 
     public Equilibrium() {
         // Holds a list of event listeners, in our case registry events
@@ -46,7 +44,8 @@ public class Equilibrium {
         ModSounds.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        if (CREATIVE_TAB && TROPHY_ADDITIONS) {
+
+        if (CREATIVE_MODE_TAB) {
             ModCreativeModeTabs.register(modEventBus);
         }
 
@@ -63,7 +62,7 @@ public class Equilibrium {
     private void commonSetup(final FMLCommonSetupEvent event) {}
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (!CREATIVE_TAB && TROPHY_ADDITIONS) {
+        if (!CREATIVE_MODE_TAB) {
             if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
                 event.accept(ModItems.MUSIC_DISC_GOLD);
                 event.accept(ModItems.MUSIC_DISC_PLATINUM);

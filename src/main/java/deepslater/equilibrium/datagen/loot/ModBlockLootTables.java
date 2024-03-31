@@ -22,7 +22,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         // this.add(ModBlocks.YOUR_BLOCK_HERE.get(),
     }
 
-    // Returns the iterator all of the blocks in our ModBlocks register
+    // Returns the iterator containing all the blocks in our ModBlocks register
     @Override
     protected Iterable<Block> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
