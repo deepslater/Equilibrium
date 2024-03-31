@@ -8,9 +8,7 @@ Download the recommended mod version for the Minecraft version you're playing fr
 
 ## Configuration
 
-After running Minecraft with the mod installed, a config will be generated in the `config`  folder of your .minecraft root called `equilibrium-common.toml`.
-
-This should permit you to enable or disable features at will.
+The config currently has no implementation, so changing its values will do nothing.
 
 ## Features
 
