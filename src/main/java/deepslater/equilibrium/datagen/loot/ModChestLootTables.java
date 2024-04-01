@@ -114,7 +114,7 @@ public class ModChestLootTables implements LootTableSubProvider {
                 .withPool(LootPool.lootPool()
                         .setRolls(rollsBetween(1.0f, 2.0f))
                         .setBonusRolls(rollsExactly(1.0f))
-                        .add(rEnchItemToAdd(Items.ENCHANTED_BOOK, 15))
+                        .add(rEnchItemToAdd(Items.BOOK, 15))
                         .add(itemToAdd(Items.MUSIC_DISC_13, 22))
                         .add(itemToAdd(Items.MUSIC_DISC_11, 22))
                         .add(itemsToAdd(Items.GOLD_INGOT, 41, 1.0f, 6.0f))
