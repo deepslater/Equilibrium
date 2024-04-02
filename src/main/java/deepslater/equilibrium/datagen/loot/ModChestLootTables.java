@@ -26,7 +26,7 @@ public class ModChestLootTables implements LootTableSubProvider {
         p_250931_.accept(ModLootTables.SOUL_WORKSHOP, soulWorkshopLootTable());
         p_250931_.accept(ModLootTables.SEMIPRECIOUS_ARMOR, semipreciousArmorLootTable());
         p_250931_.accept(ModLootTables.PRECIOUS_UNDERGROUND_TOOL, preciousUndergroundToolLootTable());
-        p_250931_.accept(ModLootTables.MINECART_WITH, minecartWithLootTable());
+        p_250931_.accept(ModLootTables.MINECART_WITH_INGREDIENT, minecartWithIngredientLootTable());
         p_250931_.accept(BuiltInLootTables.SIMPLE_DUNGEON, simpleDungeonLootTable());
         p_250931_.accept(BuiltInLootTables.ABANDONED_MINESHAFT, mineshaftLootTable());
     }
@@ -103,7 +103,7 @@ public class ModChestLootTables implements LootTableSubProvider {
                 .withPool(LootPool.lootPool()
                         .setRolls(rollsExactly(3.0f))
                         .setBonusRolls(rollsExactly(1.0f))
-                        .add(tableToAdd(ModLootTables.MINECART_WITH, 20,0))
+                        .add(tableToAdd(ModLootTables.MINECART_WITH_INGREDIENT, 20,0))
                         .add(itemsToAdd(Items.RAIL, 40, 4.0f, 8.0f))
                         .add(itemsToAdd(Items.POWERED_RAIL, 25, 1.0f, 4.0f))
                         .add(itemsToAdd(Items.DETECTOR_RAIL, 8, 1.0f, 4.0f))
@@ -208,7 +208,7 @@ public class ModChestLootTables implements LootTableSubProvider {
                 );
     }
 
-    public static LootTable.Builder minecartWithLootTable() {
+    public static LootTable.Builder minecartWithIngredientLootTable() {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
                         .setRolls(rollsExactly(1.0f))

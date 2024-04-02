@@ -13,7 +13,7 @@ public class ModLootTables {
     public static final ResourceLocation SOUL_WORKSHOP;
     public static final ResourceLocation SEMIPRECIOUS_ARMOR;
     public static final ResourceLocation PRECIOUS_UNDERGROUND_TOOL;
-    public static final ResourceLocation MINECART_WITH;
+    public static final ResourceLocation MINECART_WITH_INGREDIENT;
 
     private static ResourceLocation register(String pId) {
         return register(new ResourceLocation(pId));
@@ -31,6 +31,6 @@ public class ModLootTables {
         SOUL_WORKSHOP = register("equilibrium:chests/soul_workshop");
         SEMIPRECIOUS_ARMOR = register("gameplay/semiprecious_armor");
         PRECIOUS_UNDERGROUND_TOOL = register("gameplay/precious_underground_tool");
-        MINECART_WITH = register("gameplay/minecart_with");
+        MINECART_WITH_INGREDIENT = register("gameplay/minecart_with");
     }
 }
