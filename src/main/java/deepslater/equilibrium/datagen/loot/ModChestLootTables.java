@@ -1,5 +1,6 @@
 package deepslater.equilibrium.datagen.loot;
 
+import com.mojang.datafixers.kinds.Const;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -29,6 +30,7 @@ public class ModChestLootTables implements LootTableSubProvider {
         p_250931_.accept(ModLootTables.MINECART_WITH_INGREDIENT, minecartWithIngredientLootTable());
         p_250931_.accept(BuiltInLootTables.SIMPLE_DUNGEON, simpleDungeonLootTable());
         p_250931_.accept(BuiltInLootTables.ABANDONED_MINESHAFT, mineshaftLootTable());
+        p_250931_.accept(BuiltInLootTables.VILLAGE_WEAPONSMITH, villageWeaponsmithLootTable());
     }
 
     public static LootTable.Builder soulWorkshopLootTable() {
@@ -54,10 +56,10 @@ public class ModChestLootTables implements LootTableSubProvider {
                 .withPool(LootPool.lootPool()
                         .setRolls(rollsExactly(1.0f))
                         .setBonusRolls(rollsExactly(1.0f))
-                        .add(sEnchLevelsItemToAdd(Items.DIAMOND_SHOVEL, 20, 30.0f, 50.0f))
-                        .add(sEnchLevelsItemToAdd(Items.NETHERITE_SHOVEL, 5, 30.0f, 50.0f))
+                        .add(levelsEnchTItemToAdd(Items.DIAMOND_SHOVEL, 20, 30.0f, 50.0f))
+                        .add(levelsEnchTItemToAdd(Items.NETHERITE_SHOVEL, 5, 30.0f, 50.0f))
                         .add(itemToAdd(Items.SPYGLASS, 25))
-                        .add(sEnchLevelsItemToAdd(Items.DIAMOND_HOE, 25, 30.0f, 50.0f))
+                        .add(levelsEnchTItemToAdd(Items.DIAMOND_HOE, 25, 30.0f, 50.0f))
                         .add(nothingToAdd(25))
                 )
                 // Soul light items
@@ -76,6 +78,32 @@ public class ModChestLootTables implements LootTableSubProvider {
                         .add(itemsToAdd(Items.SOUL_SOIL, 30, 10.0f, 32.0f))
                         .add(itemsToAdd(Items.BONE_BLOCK, 30, 1.0f, 10.0f))
                         .add(nothingToAdd(10))
+                );
+    }
+
+    public static LootTable.Builder villageWeaponsmithLootTable() {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(rollsBetween(3.0f, 8.0f))
+                        .setBonusRolls(rollsExactly(1.0f))
+                        .add(itemsToAdd(Items.STICK, 16, 3.0f, 7.0f))
+                        .add(itemsToAdd(Items.COAL, 12,3.0f, 7.0f))
+                        .add(itemsToAdd(Items.IRON_INGOT, 12, 1.0f, 5.0f))
+                        .add(itemsToAdd(Items.FLINT, 16, 3.0f, 7.0f))
+                        .add(itemsToAdd(Items.GOLD_INGOT, 7, 1.0f, 3.0f))
+                        .add(itemsToAdd(Items.OBSIDIAN, 7, 3.0f, 7.0f))
+                        .add(itemToAdd(Items.IRON_AXE, 7))
+                        .add(itemToAdd(Items.IRON_SWORD, 7))
+                        .add(itemsToAdd(Items.EMERALD, 5, 1.0f, 4.0f))
+                        .add(levelsEnchItemToAdd(Items.IRON_AXE, 5, 5.0f, 19.0f))
+                        .add(levelsEnchItemToAdd(Items.IRON_SWORD, 5, 5.0f, 19.0f))
+                        .add(LootItem.lootTableItem(Items.TRIDENT)
+                                .setWeight(1)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)))
+                                .apply(SetItemDamageFunction.setDamage(
+                                        UniformGenerator.between(0.1f, 0.2f))
+                                )
+                        )
                 );
     }
 
@@ -253,7 +281,16 @@ public class ModChestLootTables implements LootTableSubProvider {
                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)));
     }
 
-    public static LootPoolEntryContainer.Builder<?> sEnchLevelsItemToAdd(
+    public static LootPoolEntryContainer.Builder<?> levelsEnchItemToAdd(
+            ItemLike item, int weight, float minLevels, float maxLevels) {
+        return LootItem.lootTableItem(item)
+                .setWeight(weight)
+                .apply(EnchantWithLevelsFunction.enchantWithLevels(UniformGenerator.between(minLevels, maxLevels)))
+                .apply(SetItemDamageFunction.setDamage(ConstantValue.exactly(1.0f)))
+                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)));
+    }
+
+    public static LootPoolEntryContainer.Builder<?> levelsEnchTItemToAdd(
             ItemLike item, int weight, float minLevels, float maxLevels) {
         return LootItem.lootTableItem(item)
                 .setWeight(weight)
