@@ -1,14 +1,14 @@
 {
   "homepage":"https://github.com/deepslater/Equilibrium",
   "promos": {
-    "1.20.1-latest": "1.20.1-0.0.0.3",
-    "1.20.1-recommended": "1.20.1-0.0.0.3"
+    "1.20.1-latest": "1.20.1-0.0.4.0",
+    "1.20.1-recommended": "1.20.1-0.0.1.0"
   },
   "1.20.1": {
-    "1.20.1-0.0.1.6": "Village weaponsmith loot adjusted",
-    "1.20.1-0.0.1.5": "Abandoned mineshaft loot adjusted",
-    "1.20.1-0.0.1.4": "Enchanted Book loot fix",
-    "1.20.1-0.0.1.3": "Simple dungeon loot adjusted",
+    "1.20.1-0.0.4.0": "Village weaponsmith loot adjusted",
+    "1.20.1-0.0.3.0": "Abandoned mineshaft loot adjusted",
+    "1.20.1-0.0.2.1": "Enchanted Book loot fix",
+    "1.20.1-0.0.2.0": "Simple dungeon loot adjusted",
     "1.20.1-0.0.1.2": "Loot table architecture",
     "1.20.1-0.0.1.1": "Added config",
     "1.20.1-0.0.1.0": "Datagen & *music* discs",
