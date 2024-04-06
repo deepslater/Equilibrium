@@ -17,6 +17,8 @@ import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 public class ModBlocks {
+    private static final ToIntFunction<BlockState> LIGHT_LEVEL_10 = value -> 10;
+
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, Equilibrium.MOD_ID);
 
@@ -33,11 +35,9 @@ public class ModBlocks {
     }
 
     // can call .noLootTable() to override datagen
-
-    private static ToIntFunction<BlockState> lightLevel10 = value -> 10;
     public static final RegistryObject<Block> ECHOES_BLOCK = registerBlock("echoes_block",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
-                    .lightLevel(lightLevel10)));
+            () -> new EchoesBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)
+                    .lightLevel(LIGHT_LEVEL_10)));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
