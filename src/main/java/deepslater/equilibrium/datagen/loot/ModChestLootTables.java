@@ -3,6 +3,7 @@ package deepslater.equilibrium.datagen.loot;
 import com.mojang.datafixers.kinds.Const;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
@@ -28,56 +29,55 @@ public class ModChestLootTables implements LootTableSubProvider {
         p_250931_.accept(ModLootTables.SEMIPRECIOUS_ARMOR, semipreciousArmorLootTable());
         p_250931_.accept(ModLootTables.PRECIOUS_UNDERGROUND_TOOL, preciousUndergroundToolLootTable());
         p_250931_.accept(ModLootTables.MINECART_WITH_INGREDIENT, minecartWithIngredientLootTable());
+
         p_250931_.accept(BuiltInLootTables.SIMPLE_DUNGEON, simpleDungeonLootTable());
         p_250931_.accept(BuiltInLootTables.ABANDONED_MINESHAFT, mineshaftLootTable());
         p_250931_.accept(BuiltInLootTables.VILLAGE_WEAPONSMITH, villageWeaponsmithLootTable());
+        p_250931_.accept(BuiltInLootTables.STRONGHOLD_CROSSING, strongholdCrossingLootTable());
     }
 
-    public static LootTable.Builder soulWorkshopLootTable() {
+    public static LootTable.Builder strongholdCrossingLootTable() {
         return LootTable.lootTable()
-                // Growth Catalyst pool - MOVE TO LOOT MODIFIERS TO PREVENT ISSUES
                 .withPool(LootPool.lootPool()
-                        .setRolls(rollsExactly(1.0f))
-                        .setBonusRolls(rollsExactly(3.0f))
-                        .add(nothingToAdd(99))
-                        .add(itemToAdd(Items.SCULK_SHRIEKER, 1))
-                )
-                // Growth Catalyst ingredients
-                .withPool(LootPool.lootPool()
-                        .setRolls(rollsBetween(1.0f, 2.0f))
+                        .setRolls(rollsBetween(3.0f, 8.0f))
                         .setBonusRolls(rollsExactly(1.0f))
-                        .add(itemsToAdd(Items.ECHO_SHARD, 25, 1.0f, 4.0f))
-                        .add(itemsToAdd(Items.AMETHYST_SHARD, 25, 1.0f, 16.0f))
-                        .add(itemsToAdd(Items.AMETHYST_CLUSTER, 20, 1.0f, 2.0f))
-                        .add(itemToAdd(Items.BUDDING_AMETHYST, 5))
-                        .add(itemToAdd(Items.SCULK_CATALYST, 25))
-                )
-                // Tools
-                .withPool(LootPool.lootPool()
-                        .setRolls(rollsExactly(1.0f))
-                        .setBonusRolls(rollsExactly(1.0f))
-                        .add(levelsEnchTItemToAdd(Items.DIAMOND_SHOVEL, 20, 30.0f, 50.0f))
-                        .add(levelsEnchTItemToAdd(Items.NETHERITE_SHOVEL, 5, 30.0f, 50.0f))
-                        .add(itemToAdd(Items.SPYGLASS, 25))
-                        .add(levelsEnchTItemToAdd(Items.DIAMOND_HOE, 25, 30.0f, 50.0f))
-                        .add(nothingToAdd(25))
-                )
-                // Soul light items
-                .withPool(LootPool.lootPool()
-                        .setRolls(rollsBetween(1.0f, 2.0f))
-                        .setBonusRolls(rollsExactly(1.0f))
-                        .add(itemsToAdd(Items.SOUL_TORCH, 55, 16.0f, 64.0f))
-                        .add(itemsToAdd(Items.SOUL_LANTERN, 30, 1.0f, 4.0f))
-                        .add(itemToAdd(Items.SOUL_CAMPFIRE, 15))
-                )
-                // Soul Sand Valley items
-                .withPool(LootPool.lootPool()
-                        .setRolls(rollsBetween(1.0f, 2.0f))
-                        .setBonusRolls(rollsExactly(1.0f))
-                        .add(itemsToAdd(Items.SOUL_SAND, 30, 10.0f, 32.0f))
-                        .add(itemsToAdd(Items.SOUL_SOIL, 30, 10.0f, 32.0f))
-                        .add(itemsToAdd(Items.BONE_BLOCK, 30, 1.0f, 10.0f))
-                        .add(nothingToAdd(10))
+                        .add(itemToAdd(Items.ENCHANTED_GOLDEN_APPLE, 1))
+                        .add(itemsToAdd(Items.GOLDEN_APPLE, 2, 1.0f, 3.0f))
+                        .add(itemsToAdd(Items.GOLDEN_CARROT, 10, 1.0f, 5.0f))
+                        .add(itemToAdd(Items.HONEY_BOTTLE, 5))
+                        .add(LootItem.lootTableItem(
+                                Items.SUSPICIOUS_STEW)
+                                .setWeight(5)
+                                .apply(SetStewEffectFunction.stewEffect()
+                                        .withEffect(MobEffects.NIGHT_VISION, ConstantValue.exactly(30.0f))
+                                )
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)))
+                        )
+                        .add(LootItem.lootTableItem(
+                                Items.SUSPICIOUS_STEW)
+                                .setWeight(5)
+                                .apply(SetStewEffectFunction.stewEffect()
+                                        .withEffect(MobEffects.SATURATION, ConstantValue.exactly(.035f))
+                                )
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)))
+                        )
+                        .add(LootItem.lootTableItem(
+                                Items.BOOK)
+                                .setWeight(2)
+                                .apply(EnchantWithLevelsFunction.enchantWithLevels(
+                                        ConstantValue.exactly(30.0f))
+                                        .allowTreasure()
+                                )
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0f)))
+                        )
+                        .add(itemsToAdd(Items.GOLD_INGOT, 10, 1.0f, 3.0f))
+                        .add(itemToAdd(Items.WATER_BUCKET, 10))
+                        .add(itemsToAdd(Items.POISONOUS_POTATO, 5, 1.0f, 3.0f))
+                        .add(itemsToAdd(Items.RED_MUSHROOM, 10, 5.0f, 15.0f))
+                        .add(itemsToAdd(Items.BROWN_MUSHROOM, 10, 5.0f, 15.0f))
+                        .add(itemsToAdd(Items.WHEAT, 15, 3.0f, 9.0f))
+                        .add(itemsToAdd(Items.ROTTEN_FLESH, 5, 1.0f, 3.0f))
+                        .add(itemsToAdd(Items.LEATHER, 5, 1.0f, 5.0f))
                 );
     }
 
@@ -245,6 +245,54 @@ public class ModChestLootTables implements LootTableSubProvider {
                         .add(itemToAdd(Items.HOPPER, 25))
                         .add(itemToAdd(Items.FURNACE, 25))
         );
+    }
+
+    public static LootTable.Builder soulWorkshopLootTable() {
+        return LootTable.lootTable()
+                // Growth Catalyst pool - MOVE TO LOOT MODIFIERS TO PREVENT ISSUES
+                .withPool(LootPool.lootPool()
+                        .setRolls(rollsExactly(1.0f))
+                        .setBonusRolls(rollsExactly(3.0f))
+                        .add(nothingToAdd(99))
+                        .add(itemToAdd(Items.SCULK_SHRIEKER, 1))
+                )
+                // Growth Catalyst ingredients
+                .withPool(LootPool.lootPool()
+                        .setRolls(rollsBetween(1.0f, 2.0f))
+                        .setBonusRolls(rollsExactly(1.0f))
+                        .add(itemsToAdd(Items.ECHO_SHARD, 25, 1.0f, 4.0f))
+                        .add(itemsToAdd(Items.AMETHYST_SHARD, 25, 1.0f, 16.0f))
+                        .add(itemsToAdd(Items.AMETHYST_CLUSTER, 20, 1.0f, 2.0f))
+                        .add(itemToAdd(Items.BUDDING_AMETHYST, 5))
+                        .add(itemToAdd(Items.SCULK_CATALYST, 25))
+                )
+                // Tools
+                .withPool(LootPool.lootPool()
+                        .setRolls(rollsExactly(1.0f))
+                        .setBonusRolls(rollsExactly(1.0f))
+                        .add(levelsEnchTItemToAdd(Items.DIAMOND_SHOVEL, 20, 30.0f, 50.0f))
+                        .add(levelsEnchTItemToAdd(Items.NETHERITE_SHOVEL, 5, 30.0f, 50.0f))
+                        .add(itemToAdd(Items.SPYGLASS, 25))
+                        .add(levelsEnchTItemToAdd(Items.DIAMOND_HOE, 25, 30.0f, 50.0f))
+                        .add(nothingToAdd(25))
+                )
+                // Soul light items
+                .withPool(LootPool.lootPool()
+                        .setRolls(rollsBetween(1.0f, 2.0f))
+                        .setBonusRolls(rollsExactly(1.0f))
+                        .add(itemsToAdd(Items.SOUL_TORCH, 55, 16.0f, 64.0f))
+                        .add(itemsToAdd(Items.SOUL_LANTERN, 30, 1.0f, 4.0f))
+                        .add(itemToAdd(Items.SOUL_CAMPFIRE, 15))
+                )
+                // Soul Sand Valley items
+                .withPool(LootPool.lootPool()
+                        .setRolls(rollsBetween(1.0f, 2.0f))
+                        .setBonusRolls(rollsExactly(1.0f))
+                        .add(itemsToAdd(Items.SOUL_SAND, 30, 10.0f, 32.0f))
+                        .add(itemsToAdd(Items.SOUL_SOIL, 30, 10.0f, 32.0f))
+                        .add(itemsToAdd(Items.BONE_BLOCK, 30, 1.0f, 10.0f))
+                        .add(nothingToAdd(10))
+                );
     }
 
     // Helper methods
