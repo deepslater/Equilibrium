@@ -1,8 +1,8 @@
 package deepslater.equilibrium.block;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -75,15 +75,17 @@ public class EchoesBlock extends Block {
     private void spawnInteractParticles(Level pLevel, BlockPos pPos, Player pPlayer) {
         double d0 = 0.6;
         RandomSource randomsource = pLevel.random;
-        Direction direction = pPlayer.getDirection();
-        Direction.Axis direction$axis = direction.getOpposite().getAxis();
+        if(Minecraft.getInstance().hitResult instanceof BlockHitResult blockHitResult) {
+            Direction direction = blockHitResult.getDirection();
+            Direction.Axis direction$axis = direction.getAxis();
 
-        double d1 = direction$axis == Direction.Axis.X ? 0.5 + d0 * (double)direction.getStepX() : (double)randomsource.nextFloat();
-        double d2 = direction$axis == Direction.Axis.Y ? 0.5 + d0 * (double)direction.getStepY() : (double)randomsource.nextFloat();
-        double d3 = direction$axis == Direction.Axis.Z ? 0.5 + d0 * (double)direction.getStepZ() : (double)randomsource.nextFloat();
-        pLevel.addParticle(ParticleTypes.SCULK_SOUL, (double)pPos.getX() + d1, (double)pPos.getY() + d2, (double)pPos.getZ() + d3, 0.0, 0.0, 0.0);
+            double d1 = direction$axis == Direction.Axis.X ? 0.5 + d0 * (double) direction.getStepX() : (double) randomsource.nextFloat();
+            double d2 = direction$axis == Direction.Axis.Y ? 0.5 + d0 * (double) direction.getStepY() : (double) randomsource.nextFloat();
+            double d3 = direction$axis == Direction.Axis.Z ? 0.5 + d0 * (double) direction.getStepZ() : (double) randomsource.nextFloat();
+            pLevel.addParticle(ParticleTypes.SCULK_SOUL, (double) pPos.getX() + d1, (double) pPos.getY() + d2, (double) pPos.getZ() + d3, 0.0, 0.0, 0.0);
 
-        float f = this.random.nextFloat() * 0.4F + this.random.nextFloat() > 0.9F ? 0.6F : 0.0F;
-        pPlayer.playSound(SoundEvents.SOUL_ESCAPE, f, 0.6F + this.random.nextFloat() * 0.4F);
+            float f = this.random.nextFloat() * 0.4F + this.random.nextFloat() > 0.9F ? 0.6F : 0.0F;
+            pPlayer.playSound(SoundEvents.SOUL_ESCAPE, f, 0.6F + this.random.nextFloat() * 0.4F);
+        }
     }
 }
