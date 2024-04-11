@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "deepslater.equilibrium.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "SculkVeinMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
